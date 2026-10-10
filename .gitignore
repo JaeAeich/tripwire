@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+runs/
+web/node_modules/
+web/dist/
+HANDOFF.md
+.claude/worktrees/
+
+scenarios/*/versions/
