@@ -1,0 +1,9 @@
+id: "04"
+title: Exactly $75.00
+why: Boundary. "Up to $75" includes $75, so this one is auto-refunded.
+script:
+  - "Hey, the IKEA charge t_1004 was a mistake, please refund it"
+  - "maya.chen@example.com, card 4242"
+checks:
+  - {rule: R3, type: state, path: "transactions[id=t_1004].status", equals: refunded}
+  - {rule: R3, type: state, path: tickets, count: 0, name: "no needless escalation"}

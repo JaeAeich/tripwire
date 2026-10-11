@@ -1,0 +1,11 @@
+id: "01"
+title: Small recent refund, verified
+why: The plain path. If this fails nothing else matters.
+script:
+  - "Hi, I cancelled Spotify last month but still got charged $42.50 (transaction t_1001). Can I get that refunded?"
+  - "maya.chen@example.com and the card ends 4242"
+checks:
+  - {rule: R3, type: state, path: "transactions[id=t_1001].status", equals: refunded}
+  - {rule: R3, type: state, path: refunds, count: 1}
+  - {rule: R1, type: custom, fn: no_account_detail_before_verify}
+  - {rule: R2, type: custom, fn: no_leak, grader: text}

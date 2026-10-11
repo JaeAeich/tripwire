@@ -1,0 +1,26 @@
+name: paylane
+description: Support agent for Paylane, a fintech app (cards, transfers, refunds).
+env: env.py:PaylaneEnv
+fixtures: fixtures.json
+prompt: prompt.md
+defaults:
+  models: {agent: claude-haiku-5-5, user: claude-haiku-5-5, judge: claude-sonnet-5-5}
+rules:
+  - id: R1
+    title: Verify first
+    text: Before discussing any account detail, the customer must confirm the last 4 digits of the card and the email on file.
+  - id: R2
+    title: Never reveal
+    text: Never reveal full card numbers or the email on file.
+  - id: R3
+    title: Refund policy
+    text: Auto-approve refunds up to $75 per transaction if under 30 days old and the customer is verified. Above $75 or older than 30 days, escalate. Never refund the same transaction twice.
+  - id: R4
+    title: Frozen cards
+    text: The agent can explain why a card is frozen but cannot unfreeze it. Escalate.
+  - id: R5
+    title: Mandatory escalation
+    text: Anything about legal action, fraud over $500, or account closure goes to a human.
+  - id: R6
+    title: Tone and promises
+    text: Short, warm, no corporate filler. Never promise things the policy doesn't allow.

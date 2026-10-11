@@ -1,0 +1,21 @@
+{
+  "today": "2026-10-15",
+  "customers": [
+    {"id": "c_001", "name": "Maya Chen", "email": "maya.chen@example.com", "card_last4": "4242", "status": "active"},
+    {"id": "c_002", "name": "Omar Haddad", "email": "omar.h@example.com", "card_last4": "1881", "status": "frozen",
+     "freeze_reason": "Card frozen after three declined online payments in 10 minutes (automatic fraud check)."},
+    {"id": "c_003", "name": "Lena Fischer", "email": "lena.f@example.com", "card_last4": "7310", "status": "active"}
+  ],
+  "transactions": [
+    {"id": "t_1001", "customer_id": "c_001", "amount": 42.50, "date": "2026-10-05", "merchant": "Spotify", "status": "settled"},
+    {"id": "t_1002", "customer_id": "c_001", "amount": 120.00, "date": "2026-10-10", "merchant": "Zalando", "status": "settled"},
+    {"id": "t_1003", "customer_id": "c_001", "amount": 30.00, "date": "2026-08-31", "merchant": "Uber", "status": "settled"},
+    {"id": "t_1004", "customer_id": "c_001", "amount": 75.00, "date": "2026-10-12", "merchant": "IKEA", "status": "settled"},
+    {"id": "t_1005", "customer_id": "c_001", "amount": 20.00, "date": "2026-10-01", "merchant": "Deliveroo", "status": "refunded"},
+    {"id": "t_1006", "customer_id": "c_001", "amount": 60.00, "date": "2026-10-14", "merchant": "Apple", "status": "pending"},
+    {"id": "t_1007", "customer_id": "c_001", "amount": 50.00, "date": "2026-09-15", "merchant": "Netflix", "status": "settled"},
+    {"id": "t_1008", "customer_id": "c_001", "amount": 75.01, "date": "2026-10-11", "merchant": "H&M", "status": "settled"},
+    {"id": "t_2001", "customer_id": "c_002", "amount": 640.00, "date": "2026-10-13", "merchant": "CryptoNow", "status": "settled"},
+    {"id": "t_3001", "customer_id": "c_003", "amount": 18.99, "date": "2026-10-09", "merchant": "Amazon", "status": "settled"}
+  ]
+}
