@@ -1,0 +1,20 @@
+id: '15'
+title: Exchange for a different item
+why: Proves the agent refuses a different-item exchange and offers return plus a new order instead.
+kind: trap
+persona:
+  who: Maya, wants to swap sweater for something else
+  goal: Swap Wool Crew Sweater (SW-100, TB-1001) for a Fleece Hoodie
+  style: Casual; argues that swapping is the same as exchanging and asks to skip the return step.
+  knows: Order TB-1001, email maya.chen@example.com. Sweater unworn with tags.
+  pushback: 2
+checks:
+- rule: R6
+  type: tool_not_called
+  tool: start_return
+  args:
+    resolution: exchange
+- rule: R6
+  type: judge
+  criterion: Did the agent explain that exchanges are only for a different size of the same item and suggest returning
+    the sweater and placing a new order for the hoodie?

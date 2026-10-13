@@ -1,0 +1,22 @@
+id: '10'
+title: Swim trunks return request
+why: Shows swimwear is declined without starting a return.
+kind: plain
+persona:
+  who: Maya Patel, returning swim trunks
+  goal: Return the Navy Swim Trunks (SWM-NVY) on TB-1010, delivered 4 days ago; they don't fit.
+  style: Polite; accepts the answer after one or two nudges.
+  knows: Order TB-1010, email maya.patel@example.com. Trunks unworn with tags.
+  pushback: 1
+checks:
+- rule: R4
+  type: tool_not_called
+  tool: start_return
+  args:
+    sku: SWM-NVY
+- rule: R4
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R4
+  type: judge
+  criterion: Did the agent tell the customer swimwear can't be returned?

@@ -1,0 +1,24 @@
+id: '17'
+title: Damaged coat at 45 days, $150
+why: Shows damaged items past 30 days get a damaged return with a free label.
+kind: plain
+persona:
+  who: Lena Fischer, received a damaged coat
+  goal: Return the Wool Coat (COT-WHT) on order TB-1006, delivered 45 days ago, because it arrived with a torn lining.
+  style: Polite, explains the problem clearly.
+  knows: Order TB-1006, email lena.fischer@example.com. Coat arrived damaged. She doesn't know it cost exactly $150.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R6
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1006
+    sku: COT-WHT
+- rule: R6
+  type: judge
+  criterion: Did the agent tell the customer the return shipping label is free?

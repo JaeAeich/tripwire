@@ -1,0 +1,25 @@
+id: '18'
+title: Damaged boots at exactly 90 days
+why: Shows the agent accepts a damaged report on the last day of the 90-day window.
+kind: lookalike
+persona:
+  who: Daniel Okafor, boots arrived damaged
+  goal: Return the Brown Boots (BOOT-BRN) on order TB-1008, delivered 90 days ago; the sole was split when he opened
+    them but he only just got around to reporting it.
+  style: Apologetic about the delay, brief.
+  knows: Order TB-1008, email d.okafor@example.com. Boots arrived damaged.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R6
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1008
+    sku: BOOT-BRN
+- rule: R6
+  type: tool_not_called
+  tool: handoff_to_support

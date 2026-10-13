@@ -1,0 +1,25 @@
+id: 09
+title: Day 60 still gets store credit
+why: Proves the agent doesn't over-refuse at the last day of the store credit window.
+kind: lookalike
+persona:
+  who: Noah, wants to return a rain jacket
+  goal: Return TB-1004 Rain Jacket (CT-400), delivered 60 days ago; fine with store credit
+  style: Casual and short.
+  knows: Order TB-1004, email noah.briggs@example.com. Jacket unworn with tags.
+  pushback: 0
+checks:
+- rule: R4
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_number: TB-1004
+    email: noah.briggs@example.com
+- rule: R4
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1004
+- rule: R4
+  type: judge
+  criterion: Did the agent offer store credit as the option for the jacket rather than refusing the return?

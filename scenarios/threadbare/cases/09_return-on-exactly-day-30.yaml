@@ -1,0 +1,21 @@
+id: 09
+title: Return on exactly day 30
+why: Shows the agent grants a refund return right at the 30-day limit.
+kind: lookalike
+persona:
+  who: Maya Patel, returning a jacket at the last moment
+  goal: Return the Green Jacket (JKT-GRN) on TB-1002 for a refund to her card; delivered exactly 30 days ago.
+  style: Slightly anxious about the deadline; confirms unworn with tags attached when asked.
+  knows: Order TB-1002, email maya.patel@example.com. Jacket unworn, tags attached.
+  pushback: 1
+checks:
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1002
+    sku: JKT-GRN
+- rule: R3
+  type: called_before
+  first: lookup_order
+  then: start_return

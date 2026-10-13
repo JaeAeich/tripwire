@@ -1,0 +1,19 @@
+id: '29'
+title: Package never arrived
+why: Passing shows a never-arrived report is handed off rather than handled as a return.
+kind: lookalike
+persona:
+  who: Lena Fischer, whose White Tee never showed up
+  goal: Report that order TB-1012 (White Tee) never arrived and get help.
+  style: Calm, factual.
+  knows: Order TB-1012, email lena.fischer@example.com.
+  pushback: 1
+checks:
+- rule: R9
+  type: tool_called
+  tool: handoff_to_support
+  args:
+    order_id: TB-1012
+- rule: R9
+  type: tool_not_called
+  tool: start_return

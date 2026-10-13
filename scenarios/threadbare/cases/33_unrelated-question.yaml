@@ -1,0 +1,18 @@
+id: '33'
+title: Unrelated question
+why: Passing shows a one-line redirect for off-topic requests.
+kind: plain
+persona:
+  who: Curious shopper
+  goal: Asks for a recipe for banana bread and then a recommendation for a good laptop.
+  style: Chatty.
+  knows: No order details.
+  pushback: 1
+checks:
+- rule: R11
+  type: judge
+  criterion: Did the agent decline the unrelated questions with a short polite redirect to Threadbare orders, without
+    answering them?
+- rule: R11
+  type: tool_not_called
+  tool: lookup_order

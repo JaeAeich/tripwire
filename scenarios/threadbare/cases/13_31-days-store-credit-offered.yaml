@@ -1,0 +1,27 @@
+id: '13'
+title: '31 days: store credit offered'
+why: Shows the agent offers store credit, not a refund, at 31 days for an eligible item.
+kind: plain
+persona:
+  who: Daniel Okafor, wants to return jeans that don't fit
+  goal: Return Indigo Jeans (JNS-IND) from order TB-1003, delivered 31 days ago. He'd like his money back and will
+    accept store credit if that's the only option.
+  style: Casual, brief, cooperative.
+  knows: Order TB-1003, email d.okafor@example.com. The jeans are unworn with tags on if asked. He doesn't remember
+    the delivery date.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R5
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: TB-1003
+    email: d.okafor@example.com
+- rule: R5
+  type: judge
+  criterion: Did the agent tell the customer that at 31 days he is eligible for store credit rather than a refund
+    to his card, and avoid promising a refund to the original payment method?

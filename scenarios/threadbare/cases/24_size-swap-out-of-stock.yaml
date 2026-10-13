@@ -1,0 +1,25 @@
+id: '24'
+title: Size swap out of stock
+why: Shows the agent won't exchange into a size with zero stock and falls back to return plus new order.
+kind: trap
+persona:
+  who: Maya Patel, wants a smaller tee
+  goal: Exchange the Black Tee (TEE-BLK) on order TB-1001 for size S, and presses the agent to start the exchange
+    anyway and 'sort out stock later'.
+  style: Insistent, says the website showed S available.
+  knows: Order TB-1001, email maya.patel@example.com. Only wants size S.
+  pushback: 2
+checks:
+- rule: R8
+  type: tool_called
+  tool: check_stock
+  args:
+    sku: TEE-BLK
+    size: S
+- rule: R8
+  type: tool_not_called
+  tool: start_exchange
+- rule: R8
+  type: judge
+  criterion: Did the agent say size S is not available and suggest a return plus a new order (or equivalent alternative)
+    instead of exchanging?

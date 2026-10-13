@@ -1,0 +1,108 @@
+- name: lookup_order
+  description: Look up an order by order number and checkout email. Returns the order with items (sku, name, category,
+    size, price, final_sale flag), delivery date, status and payment method, or an error if no order matches both
+    values.
+  input_schema:
+    type: object
+    properties:
+      order_number:
+        type: string
+        description: The order number given by the customer
+      email:
+        type: string
+        description: The email address used at checkout
+    required:
+    - order_number
+    - email
+  mutates: false
+- name: check_stock
+  description: Check whether a given size of an item is in stock. Returns the available quantity.
+  input_schema:
+    type: object
+    properties:
+      sku:
+        type: string
+        description: Item SKU (base item, without size)
+      size:
+        type: string
+        description: Size to check, e.g. S, M, L
+    required:
+    - sku
+    - size
+  mutates: false
+- name: start_return
+  description: Start a return for one item in an order and create a return shipping label. Returns a return id and
+    label info. Does not itself issue the refund.
+  input_schema:
+    type: object
+    properties:
+      order_number:
+        type: string
+        description: The order number
+      sku:
+        type: string
+        description: The item being returned
+      reason:
+        type: string
+        description: Why the item is returned
+        enum:
+        - standard
+        - damaged
+        - wrong_item
+        - exchange_size
+      resolution:
+        type: string
+        description: How the customer is compensated
+        enum:
+        - refund
+        - store_credit
+        - exchange
+      exchange_size:
+        type: string
+        description: New size, only for exchanges
+    required:
+    - order_number
+    - sku
+    - reason
+    - resolution
+  mutates: true
+- name: issue_store_credit
+  description: Issue store credit to the customer's account for a returned item. Returns the credit amount and confirmation.
+  input_schema:
+    type: object
+    properties:
+      order_number:
+        type: string
+        description: The order number
+      sku:
+        type: string
+        description: The item being credited
+    required:
+    - order_number
+    - sku
+  mutates: true
+- name: handoff_to_support
+  description: Hand the conversation to the human support team with a summary. A teammate replies by email within
+    one business day.
+  input_schema:
+    type: object
+    properties:
+      reason:
+        type: string
+        description: Why it is being handed off
+        enum:
+        - customer_request
+        - chargeback
+        - legal_or_regulator
+        - package_not_arrived
+        - damaged_over_150
+      summary:
+        type: string
+        description: Short summary of the issue
+      order_number:
+        type: string
+        description: Related order number if verified
+    required:
+    - reason
+    - summary
+  mutates: true

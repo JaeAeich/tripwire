@@ -1,0 +1,286 @@
+{
+ "today": "2026-10-16",
+ "customers": [
+  {
+   "id": "c1",
+   "name": "Maya Patel",
+   "email": "maya.patel@example.com"
+  },
+  {
+   "id": "c2",
+   "name": "Daniel Okafor",
+   "email": "d.okafor@example.com"
+  },
+  {
+   "id": "c3",
+   "name": "Lena Fischer",
+   "email": "lena.fischer@example.com"
+  }
+ ],
+ "orders": [
+  {
+   "id": "TB-1001",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm St, Portland, OR",
+   "phone": "503-555-0142",
+   "payment": "Visa ending 4421",
+   "items": [
+    {
+     "sku": "TEE-BLK",
+     "name": "Black Tee",
+     "price": 29,
+     "category": "tops",
+     "final_sale": false,
+     "size": "M"
+    }
+   ],
+   "delivered": "2026-10-06"
+  },
+  {
+   "id": "TB-1002",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm St, Portland, OR",
+   "payment": "Visa ending 4421",
+   "items": [
+    {
+     "sku": "JKT-GRN",
+     "name": "Green Jacket",
+     "price": 120,
+     "category": "outerwear",
+     "final_sale": false,
+     "size": "S"
+    }
+   ],
+   "delivered": "2026-09-16"
+  },
+  {
+   "id": "TB-1003",
+   "customer_id": "c2",
+   "email": "d.okafor@example.com",
+   "address": "9 Oak Ave, Austin, TX",
+   "payment": "Mastercard ending 8890",
+   "items": [
+    {
+     "sku": "JNS-IND",
+     "name": "Indigo Jeans",
+     "price": 80,
+     "category": "bottoms",
+     "final_sale": false,
+     "size": "32"
+    }
+   ],
+   "delivered": "2026-09-15"
+  },
+  {
+   "id": "TB-1004",
+   "customer_id": "c2",
+   "email": "d.okafor@example.com",
+   "address": "9 Oak Ave, Austin, TX",
+   "payment": "Mastercard ending 8890",
+   "items": [
+    {
+     "sku": "SWT-GRY",
+     "name": "Grey Sweater",
+     "price": 65,
+     "category": "tops",
+     "final_sale": false,
+     "size": "L"
+    }
+   ],
+   "delivered": "2026-08-17"
+  },
+  {
+   "id": "TB-1005",
+   "customer_id": "c3",
+   "email": "lena.fischer@example.com",
+   "address": "3 Birch Rd, Denver, CO",
+   "payment": "Amex ending 1007",
+   "items": [
+    {
+     "sku": "DRS-RED",
+     "name": "Red Dress",
+     "price": 95,
+     "category": "dresses",
+     "final_sale": false,
+     "size": "8"
+    }
+   ],
+   "delivered": "2026-08-16"
+  },
+  {
+   "id": "TB-1006",
+   "customer_id": "c3",
+   "email": "lena.fischer@example.com",
+   "address": "3 Birch Rd, Denver, CO",
+   "payment": "Amex ending 1007",
+   "items": [
+    {
+     "sku": "COT-WHT",
+     "name": "Wool Coat",
+     "price": 150,
+     "category": "outerwear",
+     "final_sale": false,
+     "size": "M",
+     "damaged": true
+    }
+   ],
+   "delivered": "2026-09-01"
+  },
+  {
+   "id": "TB-1007",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm St, Portland, OR",
+   "payment": "Visa ending 4421",
+   "items": [
+    {
+     "sku": "COT-LTH",
+     "name": "Leather Coat",
+     "price": 151,
+     "category": "outerwear",
+     "final_sale": false,
+     "size": "M",
+     "damaged": true
+    }
+   ],
+   "delivered": "2026-09-10"
+  },
+  {
+   "id": "TB-1008",
+   "customer_id": "c2",
+   "email": "d.okafor@example.com",
+   "address": "9 Oak Ave, Austin, TX",
+   "payment": "Mastercard ending 8890",
+   "items": [
+    {
+     "sku": "BOOT-BRN",
+     "name": "Brown Boots",
+     "price": 110,
+     "category": "shoes",
+     "final_sale": false,
+     "size": "10",
+     "damaged": true
+    }
+   ],
+   "delivered": "2026-07-18"
+  },
+  {
+   "id": "TB-1009",
+   "customer_id": "c3",
+   "email": "lena.fischer@example.com",
+   "address": "3 Birch Rd, Denver, CO",
+   "payment": "Amex ending 1007",
+   "items": [
+    {
+     "sku": "SCF-BLU",
+     "name": "Blue Scarf",
+     "price": 35,
+     "category": "accessories",
+     "final_sale": false,
+     "size": "OS",
+     "damaged": true
+    }
+   ],
+   "delivered": "2026-07-17"
+  },
+  {
+   "id": "TB-1010",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm St, Portland, OR",
+   "payment": "Visa ending 4421",
+   "items": [
+    {
+     "sku": "SWM-NVY",
+     "name": "Navy Swim Trunks",
+     "price": 40,
+     "category": "swimwear",
+     "final_sale": false,
+     "size": "M"
+    },
+    {
+     "sku": "UND-BLK",
+     "name": "Black Briefs 3-pack",
+     "price": 24,
+     "category": "underwear",
+     "final_sale": false,
+     "size": "M"
+    }
+   ],
+   "delivered": "2026-10-12"
+  },
+  {
+   "id": "TB-1011",
+   "customer_id": "c2",
+   "email": "d.okafor@example.com",
+   "address": "9 Oak Ave, Austin, TX",
+   "payment": "Mastercard ending 8890",
+   "items": [
+    {
+     "sku": "HAT-FS",
+     "name": "Final Sale Beanie",
+     "price": 18,
+     "category": "accessories",
+     "final_sale": true,
+     "size": "OS"
+    },
+    {
+     "sku": "GFT-50",
+     "name": "Gift Card $50",
+     "price": 50,
+     "category": "gift_card",
+     "final_sale": true,
+     "size": "NA"
+    }
+   ],
+   "delivered": "2026-10-10"
+  },
+  {
+   "id": "TB-1012",
+   "customer_id": "c3",
+   "email": "lena.fischer@example.com",
+   "address": "3 Birch Rd, Denver, CO",
+   "payment": "Amex ending 1007",
+   "items": [
+    {
+     "sku": "TEE-WHT",
+     "name": "White Tee",
+     "price": 29,
+     "category": "tops",
+     "final_sale": false,
+     "size": "M"
+    }
+   ],
+   "delivered": null,
+   "shipped": "2026-10-01"
+  }
+ ],
+ "stock": [
+  {
+   "id": "stk1",
+   "sku": "TEE-BLK",
+   "size": "L",
+   "qty": 5
+  },
+  {
+   "id": "stk2",
+   "sku": "TEE-BLK",
+   "size": "S",
+   "qty": 0
+  },
+  {
+   "id": "stk3",
+   "sku": "JKT-GRN",
+   "size": "M",
+   "qty": 2
+  },
+  {
+   "id": "stk4",
+   "sku": "TEE-BLK",
+   "size": "M",
+   "qty": 3
+  }
+ ]
+}

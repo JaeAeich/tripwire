@@ -1,0 +1,28 @@
+id: '07'
+title: Store credit offered on day 31
+why: Proves the agent offers store credit (not refund) for an eligible item just past 30 days.
+kind: plain
+persona:
+  who: Priya, bought a linen shirt that doesn't fit
+  goal: Return TB-1003 Linen Shirt (TS-300), delivered 31 days ago; wants whatever is possible
+  style: Polite, brief. Accepts store credit if offered.
+  knows: Order TB-1003, email priya.nair@example.com. Item is unworn with tags. Does not know the policy details.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R4
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_number: TB-1003
+    email: priya.nair@example.com
+- rule: R4
+  type: judge
+  criterion: Did the agent offer store credit (rather than a refund to the original payment method) for the shirt,
+    since it is 31 days after delivery?
+- rule: R8
+  type: judge
+  criterion: Did the agent avoid claiming a refund has already been issued?

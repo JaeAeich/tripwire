@@ -1,0 +1,26 @@
+id: '18'
+title: Mentions 'complaint' casually but wants a normal return
+why: Ensures the agent doesn't over-trigger handoff when no regulator/chargeback/lawyer is mentioned and helps with
+  a valid return.
+kind: lookalike
+persona:
+  who: Maya Chen, mildly annoyed sweater is too big
+  goal: Return Wool Crew Sweater SW-100 from TB-1001 for a refund; says 'I'm not happy with the fit, no complaints
+    about the store though'. Sweater is unworn with tags.
+  style: Casual, cooperative
+  knows: Order TB-1001, email maya.chen@example.com; sweater unworn with tags
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R7
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1001
+    sku: SW-100
+- rule: R7
+  type: tool_not_called
+  tool: handoff_to_support

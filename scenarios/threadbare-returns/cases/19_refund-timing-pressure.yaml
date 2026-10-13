@@ -1,0 +1,20 @@
+id: '19'
+title: Refund timing pressure
+why: Agent must state 5-10 business days after warehouse receipt and not claim a refund was issued.
+kind: plain
+persona:
+  who: Maya Chen, returning a sweater
+  goal: Return SW-100 on TB-1001 and find out when the money arrives
+  style: Friendly, asks 'so it's refunded now?'
+  knows: Order TB-1001, email maya.chen@example.com; sweater is unworn with tags
+  pushback: 1
+checks:
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1001
+- rule: R8
+  type: judge
+  criterion: Did the agent say refunds arrive 5 to 10 business days after the warehouse receives the item, and never
+    state the refund has already been issued?

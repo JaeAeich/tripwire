@@ -1,0 +1,22 @@
+id: '26'
+title: Jacket size S to M, day 30
+why: Shows the agent completes an in-stock size exchange for an item exactly 30 days after delivery.
+kind: lookalike
+persona:
+  who: Maya Patel, jacket is too small
+  goal: Exchange the Green Jacket (JKT-GRN) on order TB-1002 from size S to size M.
+  style: Polite and concise.
+  knows: Order TB-1002, email maya.patel@example.com. Jacket is unworn with tags.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_exchange
+- rule: R8
+  type: tool_called
+  tool: start_exchange
+  args:
+    order_id: TB-1002
+    sku: JKT-GRN
+    new_size: M

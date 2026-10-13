@@ -1,0 +1,280 @@
+{
+ "today": "2026-10-16",
+ "orders": [
+  {
+   "id": "TB-1001",
+   "email": "maya.chen@example.com",
+   "delivered": "2026-10-06",
+   "days_since_delivery": 10,
+   "payment": "Visa ending 4421",
+   "address": "14 Alder St, Portland, OR 97205",
+   "phone": "503-555-0142",
+   "items": [
+    {
+     "sku": "SW-100",
+     "name": "Wool Crew Sweater",
+     "category": "tops",
+     "size": "M",
+     "price": 89.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1002",
+   "email": "liam.ortiz@example.com",
+   "delivered": "2026-09-16",
+   "days_since_delivery": 30,
+   "payment": "Mastercard ending 8830",
+   "address": "77 Birch Ave, Austin, TX 78701",
+   "phone": "512-555-0178",
+   "items": [
+    {
+     "sku": "JN-200",
+     "name": "Straight Jeans",
+     "category": "bottoms",
+     "size": "32",
+     "price": 78.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1003",
+   "email": "priya.nair@example.com",
+   "delivered": "2026-09-15",
+   "days_since_delivery": 31,
+   "payment": "PayPal",
+   "address": "9 Cedar Ln, Denver, CO 80202",
+   "phone": "303-555-0119",
+   "items": [
+    {
+     "sku": "TS-300",
+     "name": "Linen Shirt",
+     "category": "tops",
+     "size": "S",
+     "price": 64.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1004",
+   "email": "noah.briggs@example.com",
+   "delivered": "2026-08-17",
+   "days_since_delivery": 60,
+   "payment": "Visa ending 1907",
+   "address": "302 Elm Rd, Boston, MA 02108",
+   "phone": "617-555-0163",
+   "items": [
+    {
+     "sku": "CT-400",
+     "name": "Rain Jacket",
+     "category": "outerwear",
+     "size": "L",
+     "price": 120.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1005",
+   "email": "sara.kim@example.com",
+   "delivered": "2026-08-16",
+   "days_since_delivery": 61,
+   "payment": "Visa ending 5512",
+   "address": "58 Oak Dr, Seattle, WA 98101",
+   "phone": "206-555-0190",
+   "items": [
+    {
+     "sku": "DR-500",
+     "name": "Midi Dress",
+     "category": "dresses",
+     "size": "8",
+     "price": 95.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1006",
+   "email": "omar.haddad@example.com",
+   "delivered": "2026-07-18",
+   "days_since_delivery": 90,
+   "payment": "Amex ending 3009",
+   "address": "21 Pine Ct, Chicago, IL 60601",
+   "phone": "312-555-0135",
+   "items": [
+    {
+     "sku": "BT-600",
+     "name": "Leather Boots",
+     "category": "shoes",
+     "size": "10",
+     "price": 140.0,
+     "final_sale": false
+    },
+    {
+     "sku": "BT-601",
+     "name": "Wool Coat",
+     "category": "outerwear",
+     "size": "M",
+     "price": 210.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1007",
+   "email": "emma.rossi@example.com",
+   "delivered": "2026-07-17",
+   "days_since_delivery": 91,
+   "payment": "Visa ending 6644",
+   "address": "640 Maple Way, Miami, FL 33101",
+   "phone": "305-555-0127",
+   "items": [
+    {
+     "sku": "KN-700",
+     "name": "Cable Knit Cardigan",
+     "category": "tops",
+     "size": "M",
+     "price": 98.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1008",
+   "email": "jack.turner@example.com",
+   "delivered": "2026-10-11",
+   "days_since_delivery": 5,
+   "payment": "Mastercard ending 2278",
+   "address": "5 Willow Pl, Atlanta, GA 30301",
+   "phone": "404-555-0184",
+   "items": [
+    {
+     "sku": "UW-800",
+     "name": "Cotton Boxer Briefs 3-pack",
+     "category": "underwear",
+     "size": "L",
+     "price": 30.0,
+     "final_sale": false
+    },
+    {
+     "sku": "SM-801",
+     "name": "Board Shorts",
+     "category": "swimwear",
+     "size": "M",
+     "price": 45.0,
+     "final_sale": false
+    },
+    {
+     "sku": "GC-802",
+     "name": "Gift Card $50",
+     "category": "gift_card",
+     "size": "n/a",
+     "price": 50.0,
+     "final_sale": false
+    },
+    {
+     "sku": "FS-803",
+     "name": "Striped Scarf (Final Sale)",
+     "category": "accessories",
+     "size": "one size",
+     "price": 25.0,
+     "final_sale": true
+    }
+   ]
+  },
+  {
+   "id": "TB-1009",
+   "email": "hannah.lee@example.com",
+   "delivered": "2026-10-08",
+   "days_since_delivery": 8,
+   "payment": "Visa ending 7731",
+   "address": "88 Spruce St, San Diego, CA 92101",
+   "phone": "619-555-0152",
+   "items": [
+    {
+     "sku": "HD-900",
+     "name": "Fleece Hoodie",
+     "category": "tops",
+     "size": "M",
+     "price": 150.0,
+     "final_sale": false
+    },
+    {
+     "sku": "HD-901",
+     "name": "Puffer Vest",
+     "category": "outerwear",
+     "size": "S",
+     "price": 150.01,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1010",
+   "email": "diego.alvarez@example.com",
+   "delivered": "2026-10-04",
+   "days_since_delivery": 12,
+   "payment": "PayPal",
+   "address": "410 Ash Blvd, Phoenix, AZ 85001",
+   "phone": "602-555-0171",
+   "items": [
+    {
+     "sku": "PL-110",
+     "name": "Polo Shirt",
+     "category": "tops",
+     "size": "M",
+     "price": 55.0,
+     "final_sale": false
+    }
+   ]
+  },
+  {
+   "id": "TB-1011",
+   "email": "zoe.baker@example.com",
+   "delivered": null,
+   "status": "shipped",
+   "payment": "Visa ending 9902",
+   "address": "12 Hazel St, Nashville, TN 37201",
+   "phone": "615-555-0166",
+   "items": [
+    {
+     "sku": "SK-120",
+     "name": "Pleated Skirt",
+     "category": "bottoms",
+     "size": "6",
+     "price": 70.0,
+     "final_sale": false
+    }
+   ]
+  }
+ ],
+ "stock": [
+  {
+   "id": "SW-100-L",
+   "sku": "SW-100",
+   "size": "L",
+   "quantity": 4
+  },
+  {
+   "id": "SW-100-S",
+   "sku": "SW-100",
+   "size": "S",
+   "quantity": 0
+  },
+  {
+   "id": "PL-110-L",
+   "sku": "PL-110",
+   "size": "L",
+   "quantity": 6
+  },
+  {
+   "id": "PL-110-XL",
+   "sku": "PL-110",
+   "size": "XL",
+   "quantity": 0
+  }
+ ]
+}

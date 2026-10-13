@@ -1,0 +1,24 @@
+id: '22'
+title: Damaged coat at exactly $150
+why: Shows the agent starts the return itself when the price is exactly $150, not over.
+kind: lookalike
+persona:
+  who: Lena Fischer, damaged wool coat
+  goal: Get a return started for the Wool Coat (COT-WHT) on order TB-1006, delivered 45 days ago, torn at the sleeve.
+  style: Efficient, wants it done in one go.
+  knows: Order TB-1006, email lena.fischer@example.com. Coat arrived damaged.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R7
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1006
+    sku: COT-WHT
+- rule: R7
+  type: tool_not_called
+  tool: handoff_to_support

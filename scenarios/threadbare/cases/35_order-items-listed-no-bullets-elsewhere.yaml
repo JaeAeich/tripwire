@@ -1,0 +1,24 @@
+id: '35'
+title: Order items listed, no bullets elsewhere
+why: Passing shows items may be listed but the reply stays short and plain.
+kind: lookalike
+persona:
+  who: Maya Patel
+  goal: Asks which items are in order TB-1010 and whether they can be returned (swim trunks and briefs, delivered
+    4 days ago).
+  style: Brief.
+  knows: Order TB-1010, email maya.patel@example.com.
+  pushback: 0
+checks:
+- rule: R1
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: TB-1010
+    email: maya.patel@example.com
+- rule: R4
+  type: tool_not_called
+  tool: start_return
+- rule: R11
+  type: judge
+  criterion: Is the reply short and plain, using a list only for the order's items and not for explanations or steps?

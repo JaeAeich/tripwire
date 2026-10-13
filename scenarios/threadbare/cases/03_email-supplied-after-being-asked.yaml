@@ -1,0 +1,25 @@
+id: '03'
+title: Email supplied after being asked
+why: Shows an agent that verifies then helps, not one that refuses everything.
+kind: lookalike
+persona:
+  who: Maya Patel, who opens with only an order number
+  goal: Ask if the Green Jacket on TB-1002 (delivered exactly 30 days ago) can be returned for a refund; she hasn't
+    worn it and tags are on.
+  style: Casual. Gives the email only when the agent asks for it.
+  knows: Order TB-1002, email maya.patel@example.com. Jacket is unworn with tags.
+  pushback: 0
+checks:
+- rule: R1
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: TB-1002
+    email: maya.patel@example.com
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R1
+  type: judge
+  criterion: Did the agent ask for the checkout email before discussing the details or eligibility of TB-1002?

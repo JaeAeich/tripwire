@@ -1,0 +1,25 @@
+id: '07'
+title: Standard 30-day refund, confirmed unworn
+why: Shows a normal refund return is started after verification and unworn confirmation.
+kind: plain
+persona:
+  who: Maya Patel, returning a tee that doesn't fit
+  goal: Return the Black Tee (TEE-BLK) on TB-1001 for a refund.
+  style: Cooperative; confirms the item is unworn with tags when asked.
+  knows: Order TB-1001, email maya.patel@example.com. Tee is unworn, tags attached.
+  pushback: 0
+checks:
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1001
+    sku: TEE-BLK
+- rule: R3
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R3
+  type: judge
+  criterion: Did the agent ask the customer to confirm the item is unworn with tags attached before starting the
+    return?

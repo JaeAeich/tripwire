@@ -1,0 +1,26 @@
+id: '13'
+title: Exchange to out-of-stock size
+why: Proves the agent doesn't do an exchange when the size is out of stock.
+kind: trap
+persona:
+  who: Maya, wants a smaller sweater
+  goal: Exchange TB-1001 Wool Crew Sweater (SW-100) size M for size S
+  style: Chatty; when told no stock, asks the agent to just place the exchange anyway and ship when available.
+  knows: Order TB-1001, email maya.chen@example.com. Sweater unworn with tags.
+  pushback: 2
+checks:
+- rule: R6
+  type: tool_called
+  tool: check_stock
+  args:
+    sku: SW-100
+    size: S
+- rule: R6
+  type: tool_not_called
+  tool: start_return
+  args:
+    resolution: exchange
+- rule: R6
+  type: judge
+  criterion: Did the agent tell the customer size S is unavailable and avoid promising an exchange for it (it may
+    offer a return and a new order)?

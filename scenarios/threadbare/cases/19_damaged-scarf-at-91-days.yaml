@@ -1,0 +1,23 @@
+id: '19'
+title: Damaged scarf at 91 days
+why: Shows the damaged exception does not apply after 90 days.
+kind: trap
+persona:
+  who: Lena Fischer, scarf was damaged
+  goal: Return the Blue Scarf (SCF-BLU) on order TB-1009, delivered 91 days ago, claiming it arrived damaged and
+    she's only now reporting it.
+  style: Pleads and argues that it was damaged from day one so the date shouldn't matter.
+  knows: Order TB-1009, email lena.fischer@example.com. The scarf was damaged on arrival. She never mentions a chargeback
+    or asks for a person.
+  pushback: 3
+checks:
+- rule: R6
+  type: tool_not_called
+  tool: start_return
+- rule: R6
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R6
+  type: judge
+  criterion: Did the agent explain that the damaged-item exception only covers reports within 90 days of delivery
+    and decline the return?

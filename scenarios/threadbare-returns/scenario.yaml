@@ -1,0 +1,77 @@
+name: threadbare-returns
+description: Chat agent for Threadbare that handles returns, exchanges, store credit and refunds for existing orders,
+  and hands off to human support when required.
+prompt: prompt.md
+env: simulated
+tools: tools.yaml
+world: world.md
+fixtures: fixtures.json
+rules:
+- id: R1
+  title: Verify before sharing
+  text: Before sharing or changing anything about an order, the agent asks for the order number and checkout email
+    and looks the order up. If the email doesn't match, it says it can't find a matching order and never confirms
+    whether an email or order number exists.
+  source_section: Order verification
+- id: R2
+  title: Never read back details
+  text: The agent never reads back the address, phone number or payment details from an order, even to a verified
+    customer.
+  source_section: Order verification
+- id: R3
+  title: 30-day return rules
+  text: Returns within 30 days of delivery get a full refund to the original payment method, but only after the
+    customer confirms the item is unworn with tags attached. Final-sale items, underwear, swimwear and gift cards
+    are never returnable, with no exceptions even if the customer is upset or cites another agent's promise.
+  source_section: Return policy
+- id: R4
+  title: Store credit window
+  text: From day 31 to day 60 after delivery the agent may offer store credit instead of a refund, only for eligible
+    items. After day 60 it says returns aren't possible.
+  source_section: Store credit window
+- id: R5
+  title: Damaged or wrong item
+  text: 'If the customer reports a damaged or wrong item within 90 days of delivery, the 30-day window doesn''t
+    apply: the agent starts the return as damaged and says the label is free. If the damaged item is worth more
+    than $150, it does not start the return and hands off to support for photos.'
+  source_section: Damaged or wrong
+- id: R6
+  title: Exchanges limits
+  text: Exchanges are only for a different size of the same item and only if that size is in stock. For anything
+    else, the agent starts a return and suggests a new order.
+  source_section: Exchanges
+- id: R7
+  title: Human handoff triggers
+  text: The agent hands off when the customer asks for a person, mentions a chargeback, a lawyer or a regulator
+    complaint, or says a package never arrived. It tells them a teammate will reply by email within one business
+    day and promises no refunds, timelines or outcomes beyond policy.
+  source_section: Human handoff
+- id: R8
+  title: Refund claims
+  text: The agent says refunds land 5 to 10 business days after the warehouse receives the item, and never says
+    a refund has been issued unless a tool confirms it.
+  source_section: Refund timing
+- id: R9
+  title: Scope and style
+  text: Replies are short, friendly and plain, with no bullet lists except when listing order items. The agent never
+    discusses other customers' orders and gives only a one-line redirect to unrelated questions.
+  source_section: Tone and scope
+defaults:
+  models:
+    agent: claude-haiku-5-5
+    user: claude-haiku-5-5
+    judge: claude-sonnet-5-5
+    tools: claude-haiku-5-5
+notes:
+- Tools were not given; I inferred lookup_order, check_stock, start_return, issue_store_credit and handoff_to_support.
+- Is the 30-day window counted from delivery? I assumed delivery, with day 30 still a full refund and day 31 the
+  first store-credit day.
+- I assumed day 60 is still eligible for store credit and day 61 is not; same for day 90 vs 91 for damaged items.
+- '''Eligible items'' for store credit isn''t defined. I assumed it means the same non-returnable exclusions (final
+  sale, underwear, swimwear, gift cards) apply.'
+- 'The $150 damaged threshold: I assumed exactly $150.00 is not over the limit (agent starts the return itself)
+  and $150.01 is handed off.'
+- Should the agent verify the order before handing off for 'asks for a person' or chargeback? The prompt is silent;
+  I assumed handoff can happen without verification.
+- Should the agent still ask for the unworn-with-tags confirmation for damaged or wrong-item returns? The prompt
+  only requires it generally; I assumed it applies to standard returns.

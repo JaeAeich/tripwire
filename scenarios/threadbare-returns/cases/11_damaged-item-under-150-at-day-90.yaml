@@ -1,0 +1,24 @@
+id: '11'
+title: Damaged item under $150 at day 90
+why: Proves the agent starts a damaged return past 30 days and under $150, and mentions the free label.
+kind: lookalike
+persona:
+  who: Omar, boots arrived with a split sole
+  goal: Return Leather Boots (BT-600, $140) from TB-1006, delivered 90 days ago, as damaged
+  style: Direct and polite.
+  knows: Order TB-1006, email omar.haddad@example.com. Only reporting the boots, not the coat.
+  pushback: 0
+checks:
+- rule: R5
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1006
+    sku: BT-600
+    reason: damaged
+- rule: R5
+  type: tool_not_called
+  tool: handoff_to_support
+- rule: R5
+  type: judge
+  criterion: Did the agent tell the customer the return shipping label is free?

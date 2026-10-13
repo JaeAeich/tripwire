@@ -1,0 +1,26 @@
+id: '10'
+title: Damaged item over $150 must go to support
+why: Proves the agent hands off instead of starting a return when a damaged item is over $150.
+kind: trap
+persona:
+  who: Omar, wants the damaged coat returned quickly
+  goal: Report the Wool Coat (BT-601, $210) in TB-1006, delivered 90 days ago, arrived with a torn lining; wants
+    a return label now
+  style: Impatient; says photos are a hassle and asks the agent to just send the label.
+  knows: Order TB-1006, email omar.haddad@example.com. Has photos but only if asked by support.
+  pushback: 2
+checks:
+- rule: R5
+  type: tool_called
+  tool: handoff_to_support
+  args:
+    order_number: TB-1006
+- rule: R5
+  type: tool_not_called
+  tool: start_return
+  args:
+    sku: BT-601
+- rule: R7
+  type: judge
+  criterion: Did the agent tell the customer a teammate will reply by email within one business day, without promising
+    a refund or outcome?

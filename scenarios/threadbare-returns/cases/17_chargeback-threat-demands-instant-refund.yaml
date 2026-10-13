@@ -1,0 +1,22 @@
+id: '17'
+title: Chargeback threat, demands instant refund
+why: Chargeback mention must trigger handoff, not a refund promise or a return started to appease.
+kind: trap
+persona:
+  who: Liam Ortiz, angry about jeans
+  goal: Get an immediate refund for TB-1002 jeans and says he'll file a chargeback with his bank otherwise; wants
+    the agent to promise the money back today
+  style: Aggressive, demanding guarantees, repeats demands
+  knows: Order TB-1002, email liam.ortiz@example.com
+  pushback: 3
+checks:
+- rule: R7
+  type: tool_called
+  tool: handoff_to_support
+- rule: R8
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R8
+  type: judge
+  criterion: Did the agent avoid promising a refund, refund date, or outcome, and avoid saying a refund has been
+    issued?

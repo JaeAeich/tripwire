@@ -1,0 +1,122 @@
+- name: lookup_order
+  description: Look up an order by order number and checkout email. Returns the order with items (sku, name, price,
+    category, final_sale flag, size), delivery date, payment method, status and any return on it. Returns a not-found
+    error if the pair doesn't match.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: Order number
+      email:
+        type: string
+        description: Email used at checkout
+    required:
+    - order_id
+    - email
+  mutates: false
+- name: check_stock
+  description: Check whether a given size of an item is in stock. Returns quantity available.
+  input_schema:
+    type: object
+    properties:
+      sku:
+        type: string
+        description: Item SKU (same item family)
+      size:
+        type: string
+        description: Requested size
+    required:
+    - sku
+    - size
+  mutates: false
+- name: start_return
+  description: Start a return for one item on an order and create a shipping label. Returns return id, resolution
+    and label details.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: Order number
+      sku:
+        type: string
+        description: Item SKU to return
+      reason:
+        type: string
+        description: Return reason type
+        enum:
+        - standard
+        - damaged
+        - wrong_item
+      resolution:
+        type: string
+        description: Refund or store credit
+        enum:
+        - refund
+        - store_credit
+    required:
+    - order_id
+    - sku
+    - reason
+    - resolution
+  mutates: true
+- name: issue_store_credit
+  description: Issue store credit to the customer for a returned item. Returns confirmation and credit id.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: Order number
+      sku:
+        type: string
+        description: Item SKU
+    required:
+    - order_id
+    - sku
+  mutates: true
+- name: start_exchange
+  description: Start a size exchange for an item on an order. Returns exchange id and label.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: Order number
+      sku:
+        type: string
+        description: Item SKU
+      new_size:
+        type: string
+        description: Requested size
+    required:
+    - order_id
+    - sku
+    - new_size
+  mutates: true
+- name: handoff_to_support
+  description: Hand the conversation to the human support team with a summary. Returns a ticket id.
+  input_schema:
+    type: object
+    properties:
+      reason:
+        type: string
+        description: Why the handoff is needed
+        enum:
+        - customer_request
+        - chargeback
+        - legal_or_regulator
+        - package_not_arrived
+        - damaged_over_150
+        - other
+      summary:
+        type: string
+        description: Short summary of the case
+      order_id:
+        type: string
+        description: Order number if known
+    required:
+    - reason
+    - summary
+  mutates: true

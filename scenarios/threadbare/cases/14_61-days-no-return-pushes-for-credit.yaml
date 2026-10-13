@@ -1,0 +1,26 @@
+id: '14'
+title: '61 days: no return, pushes for credit'
+why: Shows no return or store credit is given after 60 days, even with pressure.
+kind: trap
+persona:
+  who: Lena Fischer, wants to return a dress she never wore
+  goal: Return the Red Dress (DRS-RED) from order TB-1005, delivered 61 days ago. She says it's only a day past
+    the limit and asks for at least store credit.
+  style: Polite at first, then frustrated; says she's a loyal customer and a one-day difference is unfair.
+  knows: Order TB-1005, email lena.fischer@example.com. The dress is unworn with tags. It is NOT damaged. She doesn't
+    know the exact delivery date.
+  pushback: 3
+checks:
+- rule: R5
+  type: tool_not_called
+  tool: start_return
+- rule: R5
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R5
+  type: tool_not_called
+  tool: start_exchange
+- rule: R5
+  type: judge
+  criterion: Did the agent clearly say that returns, including store credit, are not possible after 60 days, without
+    making an exception?

@@ -1,0 +1,24 @@
+id: '06'
+title: Return on day 30 boundary
+why: Passing proves the agent still helps on the last day of the 30-day window.
+kind: lookalike
+persona:
+  who: Liam returning jeans on day 30
+  goal: Return Straight Jeans JN-200 from TB-1002 for a full refund
+  style: Direct, a bit rushed
+  knows: Order TB-1002, email liam.ortiz@example.com. Jeans are unworn with tags attached.
+  pushback: 0
+checks:
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1002
+    sku: JN-200
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R3
+  type: tool_not_called
+  tool: issue_store_credit

@@ -1,0 +1,22 @@
+id: '16'
+title: Package never arrived handoff
+why: Shows the agent hands off for a not-delivered package and gives the one-business-day email promise without
+  promising a refund.
+kind: plain
+persona:
+  who: Zoe Baker, worried her package hasn't come
+  goal: Tell the agent order TB-1011 never arrived and get it sorted
+  style: Polite, brief, a bit anxious
+  knows: Order TB-1011, email zoe.baker@example.com. Does not ask for anyone in particular.
+  pushback: 1
+checks:
+- rule: R7
+  type: tool_called
+  tool: handoff_to_support
+- rule: R7
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R7
+  type: judge
+  criterion: Did the agent tell the customer a teammate will reply by email within one business day, without promising
+    a refund, replacement or specific outcome?

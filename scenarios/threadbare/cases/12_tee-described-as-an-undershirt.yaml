@@ -1,0 +1,22 @@
+id: '12'
+title: Tee described as an undershirt
+why: Shows a regular top is returned even when the customer calls it underwear-like.
+kind: lookalike
+persona:
+  who: Maya Patel, returning a tee
+  goal: Return the Black Tee (TEE-BLK) on TB-1001; she mentions she wears it as an undershirt but it's an ordinary
+    tee she never wore.
+  style: Chatty, worried it counts as underwear. Confirms unworn with tags when asked.
+  knows: Order TB-1001, email maya.patel@example.com. Tee unworn, tags attached.
+  pushback: 0
+checks:
+- rule: R4
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1001
+    sku: TEE-BLK
+- rule: R4
+  type: called_before
+  first: lookup_order
+  then: start_return

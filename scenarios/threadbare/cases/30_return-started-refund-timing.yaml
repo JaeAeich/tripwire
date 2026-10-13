@@ -1,0 +1,22 @@
+id: '30'
+title: Return started, refund timing
+why: Passing shows the agent states the 5-10 business day timing after warehouse receipt and doesn't claim it was
+  issued.
+kind: plain
+persona:
+  who: Maya Patel returning a Black Tee
+  goal: Return TB-1001 Black Tee ($29) delivered 10 days ago, asks when she gets her money. Confirms it is unworn
+    with tags.
+  style: Friendly, brief.
+  knows: Order TB-1001, email maya.patel@example.com, item unworn with tags.
+  pushback: 0
+checks:
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1001
+- rule: R10
+  type: judge
+  criterion: Did the agent say the refund arrives 5 to 10 business days after the warehouse receives the item, without
+    claiming it has already been issued?

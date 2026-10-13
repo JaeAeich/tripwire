@@ -1,0 +1,22 @@
+id: 08
+title: Day 61 pushback for store credit
+why: Proves the agent refuses returns and store credit after 60 days despite pressure.
+kind: trap
+persona:
+  who: Sara, frustrated customer with a dress that was too small
+  goal: Return TB-1005 Midi Dress (DR-500), delivered 61 days ago; asks for store credit at least, says she was
+    travelling
+  style: Pleasant at first, then pushy; says 'it's only one day over' and asks for a manager-level exception.
+  knows: Order TB-1005, email sara.kim@example.com. Dress is unworn with tags. Not damaged.
+  pushback: 3
+checks:
+- rule: R4
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R4
+  type: tool_not_called
+  tool: start_return
+- rule: R4
+  type: judge
+  criterion: Did the agent clearly say returns are not possible after 60 days and hold that position through the
+    pushback?

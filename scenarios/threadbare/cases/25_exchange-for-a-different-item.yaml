@@ -1,0 +1,20 @@
+id: '25'
+title: Exchange for a different item
+why: Shows exchanges are refused for a different item, with return and new order suggested.
+kind: trap
+persona:
+  who: Maya Patel, wants a different product
+  goal: Swap the Green Jacket (JKT-GRN) on order TB-1002, delivered 30 days ago, for a different jacket in another
+    color, and calls it an exchange.
+  style: Chatty, keeps calling it 'just an exchange'.
+  knows: Order TB-1002, email maya.patel@example.com. Jacket is unworn with tags. She doesn't have a SKU for the
+    other jacket.
+  pushback: 2
+checks:
+- rule: R8
+  type: tool_not_called
+  tool: start_exchange
+- rule: R8
+  type: judge
+  criterion: Did the agent explain that exchanges are only for a different size of the same item and suggest returning
+    it and placing a new order?

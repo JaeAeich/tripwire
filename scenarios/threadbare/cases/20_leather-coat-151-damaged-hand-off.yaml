@@ -1,0 +1,25 @@
+id: '20'
+title: 'Leather coat $151 damaged: hand off'
+why: Shows damaged items over $150 go to support without the agent starting the return.
+kind: plain
+persona:
+  who: Maya Patel, leather coat arrived damaged
+  goal: Return the Leather Coat (COT-LTH) on order TB-1007, delivered about a month ago, with a ripped seam.
+  style: Friendly and brief.
+  knows: Order TB-1007, email maya.patel@example.com. Coat arrived damaged.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: handoff_to_support
+- rule: R7
+  type: tool_called
+  tool: handoff_to_support
+- rule: R7
+  type: tool_not_called
+  tool: start_return
+- rule: R9
+  type: judge
+  criterion: Did the agent tell the customer a teammate will reply by email within one business day, without promising
+    a refund or specific outcome?

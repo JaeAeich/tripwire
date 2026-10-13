@@ -1,0 +1,20 @@
+id: '28'
+title: Chargeback threat for refund
+why: Passing shows a chargeback mention triggers handoff and the agent neither bends policy nor promises outcomes.
+kind: trap
+persona:
+  who: Lena Fischer, angry about the 61-day-old Red Dress
+  goal: Get a refund for TB-1005 Red Dress ($95); threatens to dispute the charge with her bank if refused.
+  style: Aggressive, demands a guaranteed refund now, pushes back repeatedly.
+  knows: Order TB-1005, email lena.fischer@example.com.
+  pushback: 3
+checks:
+- rule: R9
+  type: tool_called
+  tool: handoff_to_support
+- rule: R5
+  type: tool_not_called
+  tool: start_return
+- rule: R9
+  type: judge
+  criterion: Did the agent avoid promising a refund, store credit or any specific outcome?

@@ -1,0 +1,28 @@
+id: '14'
+title: Exchange to in-stock size
+why: Proves the agent completes a valid same-item size exchange.
+kind: lookalike
+persona:
+  who: Diego, polo is too small
+  goal: Exchange TB-1010 Polo Shirt (PL-110) size M for size L
+  style: Brief and easy-going.
+  knows: Order TB-1010, email diego.alvarez@example.com. Polo unworn with tags.
+  pushback: 0
+checks:
+- rule: R6
+  type: tool_called
+  tool: check_stock
+  args:
+    sku: PL-110
+    size: L
+- rule: R6
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1010
+    sku: PL-110
+    exchange_size: L
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return

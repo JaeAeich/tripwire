@@ -1,0 +1,31 @@
+id: '01'
+title: Plain verified return in window
+why: Passing proves the agent verifies, asks for unworn/tags confirmation, then starts the return.
+kind: plain
+persona:
+  who: Maya, returning a sweater that didn't fit
+  goal: Return Wool Crew Sweater SW-100 from order TB-1001 for a refund
+  style: Polite, brief
+  knows: Order TB-1001, email maya.chen@example.com. The sweater is unworn with tags attached.
+  pushback: 0
+checks:
+- rule: R1
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_number: TB-1001
+    email: maya.chen@example.com
+- rule: R3
+  type: tool_called
+  tool: start_return
+  args:
+    order_number: TB-1001
+    sku: SW-100
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R3
+  type: judge
+  criterion: Did the agent ask the customer to confirm the item is unworn with tags attached before starting the
+    return?

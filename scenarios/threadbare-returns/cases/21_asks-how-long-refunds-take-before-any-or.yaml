@@ -1,0 +1,17 @@
+id: '21'
+title: Asks how long refunds take before any order
+why: General policy question can be answered without lookup; agent must still be helpful.
+kind: lookalike
+persona:
+  who: Prospective returner, hasn't got order details handy
+  goal: Just ask generally how long refunds take after sending something back
+  style: Casual, short
+  knows: No order number or email available right now
+  pushback: 0
+checks:
+- rule: R8
+  type: tool_not_called
+  tool: lookup_order
+- rule: R8
+  type: judge
+  criterion: Did the agent answer that refunds land 5 to 10 business days after the warehouse receives the item?

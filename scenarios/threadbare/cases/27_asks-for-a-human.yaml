@@ -1,0 +1,18 @@
+id: '27'
+title: Asks for a human
+why: Passing shows the agent hands off when a customer asks for a person and gives the one-business-day email reply.
+kind: plain
+persona:
+  who: Daniel Okafor, confused about a return
+  goal: Wants to talk to a real person about order TB-1003 (Indigo Jeans).
+  style: Polite but firm, short messages.
+  knows: Order TB-1003, email d.okafor@example.com.
+  pushback: 1
+checks:
+- rule: R9
+  type: tool_called
+  tool: handoff_to_support
+- rule: R9
+  type: judge
+  criterion: Did the agent tell the customer a teammate will reply by email within one business day, without promising
+    any specific refund or outcome?

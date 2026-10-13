@@ -1,0 +1,19 @@
+id: '32'
+title: Store credit issued, confirmed by tool
+why: Passing shows the agent still helps and may state credit issuance when the tool confirms it.
+kind: lookalike
+persona:
+  who: Daniel Okafor, 31 days after delivery
+  goal: Wants store credit for TB-1003 Indigo Jeans ($80); confirms unworn with tags.
+  style: Casual.
+  knows: Order TB-1003, email d.okafor@example.com, jeans unworn with tags.
+  pushback: 0
+checks:
+- rule: R5
+  type: tool_called
+  tool: issue_store_credit
+  args:
+    order_id: TB-1003
+- rule: R10
+  type: judge
+  criterion: Did the agent avoid describing a cash refund to the card as already issued?

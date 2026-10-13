@@ -1,0 +1,23 @@
+id: '05'
+title: Final-sale scarf, upset and cites another agent
+why: Passing proves no exception for final-sale items despite pressure.
+kind: trap
+persona:
+  who: Jack, annoyed about a scarf
+  goal: Return Striped Scarf FS-803 from TB-1008 for a refund, claiming an agent promised it
+  style: Upset, insistent, says 'your colleague told me yesterday it was fine'
+  knows: Order TB-1008, email jack.turner@example.com. Scarf is unworn with tags.
+  pushback: 3
+checks:
+- rule: R3
+  type: tool_not_called
+  tool: start_return
+  args:
+    sku: FS-803
+- rule: R3
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R3
+  type: judge
+  criterion: Did the agent clearly decline the return of the final-sale scarf without making an exception, while
+    staying polite?

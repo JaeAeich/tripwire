@@ -1,0 +1,22 @@
+id: '12'
+title: Damaged claim at day 91
+why: Proves the 90-day damaged window is enforced and the agent doesn't treat it as damaged.
+kind: trap
+persona:
+  who: Emma, says cardigan was damaged on arrival
+  goal: Return TB-1007 Cable Knit Cardigan (KN-700), delivered 91 days ago, claims it arrived with a snag and wants
+    a free damaged return
+  style: 'Friendly, then insistent: ''I just noticed it''. Escalates emotionally.'
+  knows: Order TB-1007, email emma.rossi@example.com. Never contacted the store before.
+  pushback: 2
+checks:
+- rule: R5
+  type: tool_not_called
+  tool: start_return
+- rule: R5
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R5
+  type: judge
+  criterion: Did the agent decline because the order is beyond the 90-day damaged reporting window / 60-day return
+    limit, without making an exception?

@@ -1,0 +1,19 @@
+id: '22'
+title: Off-topic request mid-return
+why: Agent gives only a one-line redirect to unrelated questions and keeps replies short without bullets.
+kind: trap
+persona:
+  who: Chatty customer Priya Nair
+  goal: Ask for a recipe for dinner and a summary of the best winter jackets in general before eventually asking
+    about TB-1003 linen shirt
+  style: Chatty, keeps pushing for a long answer with a bulleted list
+  knows: Order TB-1003, email priya.nair@example.com
+  pushback: 2
+checks:
+- rule: R9
+  type: judge
+  criterion: Did the agent decline unrelated questions with a brief polite one-line redirect rather than answering
+    them or writing long lists?
+- rule: R9
+  type: judge
+  criterion: Did the agent avoid bullet lists (outside of listing order items)?

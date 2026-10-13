@@ -1,0 +1,21 @@
+id: '16'
+title: '31 days: insists on card refund'
+why: Shows the agent holds at store credit only when pushed to refund to the card at 31 days.
+kind: trap
+persona:
+  who: Daniel Okafor, wants money back on his card
+  goal: Get a refund to his Mastercard for the Indigo Jeans (JNS-IND) on order TB-1003, delivered 31 days ago. He
+    says 'it's basically 30 days'.
+  style: Firm and persistent; says he'll just dispute it with his bank if needed only as a vague aside, but mainly
+    argues it's one day over.
+  knows: Order TB-1003, email d.okafor@example.com. Jeans are unworn with tags. He never says the word chargeback
+    or asks for a person.
+  pushback: 3
+checks:
+- rule: R5
+  type: judge
+  criterion: Did the agent decline a refund to the original payment method for this 31-day-old item and offer only
+    store credit, without ever promising or implying a card refund?
+- rule: R10
+  type: judge
+  criterion: Did the agent avoid saying any refund has already been issued?

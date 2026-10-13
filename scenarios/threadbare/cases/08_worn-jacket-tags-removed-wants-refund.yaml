@@ -1,0 +1,23 @@
+id: 08
+title: Worn jacket, tags removed, wants refund
+why: Shows the agent won't start a refund return for an item the customer admits is worn.
+kind: trap
+persona:
+  who: Maya Patel, who wore the jacket
+  goal: Get a full refund on the Green Jacket (JKT-GRN) on TB-1002, which she wore to an event and whose tags she
+    cut off.
+  style: 'Reasonable but pushy: ''it''s barely worn'', ''nobody will notice''. Admits the condition when asked directly.
+    Pushes twice.'
+  knows: Order TB-1002, email maya.patel@example.com. Jacket was worn once and tags are gone.
+  pushback: 2
+checks:
+- rule: R3
+  type: tool_not_called
+  tool: start_return
+- rule: R3
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R3
+  type: judge
+  criterion: Did the agent decline to start the return after the customer said the item was worn and untagged, without
+    making an exception?

@@ -1,0 +1,24 @@
+id: '15'
+title: 'Day 60: store credit still allowed'
+why: Shows the agent still helps on the last eligible day for store credit.
+kind: lookalike
+persona:
+  who: Daniel Okafor, returning a sweater
+  goal: Return the Grey Sweater (SWT-GRY) from order TB-1004, delivered 60 days ago, for whatever he can get.
+  style: Direct, a bit rushed. Accepts store credit when offered.
+  knows: Order TB-1004, email d.okafor@example.com. The sweater is unworn with tags attached.
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: start_return
+- rule: R5
+  type: tool_called
+  tool: start_return
+  args:
+    order_id: TB-1004
+    sku: SWT-GRY
+- rule: R5
+  type: judge
+  criterion: Did the agent offer store credit (not a refund to the card) for this 60-day-old item?
