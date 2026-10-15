@@ -1,0 +1,103 @@
+/* Design tokens. Colors are Radix Colors (light), used by their documented roles:
+   1-2 app/subtle backgrounds, 3-5 component backgrounds (normal/hover/active), 6-8 borders (subtle/normal/hover),
+   9-10 solid fills, 11-12 text (low/high contrast). Space, type and radius follow the Radix Themes scale.
+   Nothing in app.css should use a raw color or an off-scale size. */
+@import "@radix-ui/colors/sand.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/grass.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/yellow.css";
+
+:root {
+  color-scheme: light;
+
+  /* space: Radix Themes 1-9 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* type: Radix Themes font sizes 1-8 with their line heights */
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 18px;
+  --font-size-5: 20px;
+  --font-size-6: 24px;
+  --font-size-7: 28px;
+  --font-size-8: 35px;
+  --line-height-1: 16px;
+  --line-height-2: 20px;
+  --line-height-3: 24px;
+  --line-height-4: 26px;
+  --line-height-5: 28px;
+  --line-height-6: 30px;
+  --line-height-7: 36px;
+  --line-height-8: 40px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
+
+  /* radius: Radix Themes 1-5 */
+  --radius-1: 3px;
+  --radius-2: 4px;
+  --radius-3: 6px;
+  --radius-4: 8px;
+  --radius-5: 12px;
+  --radius-full: 9999px;
+
+  /* color roles */
+  --bg-app: var(--sand-2); /* the desk */
+  --bg-paper: var(--sand-1); /* pages, cards */
+  --bg-rail: var(--sand-3);
+  --bg-subtle: var(--sand-2);
+  --bg-hover: var(--sand-4);
+  --bg-active: var(--sand-5);
+  --line: var(--sand-6);
+  --line-2: var(--sand-7);
+  --line-3: var(--sand-8);
+  --text: var(--sand-12);
+  --text-2: var(--sand-11);
+  --text-3: var(--sand-10);
+  --solid: var(--sand-12);
+  --link: var(--blue-11);
+  --accent: var(--blue-9);
+
+  --holds: var(--grass-11);
+  --holds-bg: var(--grass-3);
+  --holds-line: var(--grass-6);
+  --holds-solid: var(--grass-9);
+  --breaks: var(--red-11);
+  --breaks-bg: var(--red-3);
+  --breaks-line: var(--red-6);
+  --breaks-solid: var(--red-9);
+  --flaky: var(--amber-11);
+  --flaky-bg: var(--amber-3);
+  --flaky-line: var(--amber-7);
+  --flaky-solid: var(--amber-9);
+  --unsure: var(--sand-11);
+  --unsure-bg: var(--sand-3);
+  --unsure-line: var(--sand-7);
+  --unsure-solid: var(--sand-8);
+  --hot: var(--yellow-4); /* highlighter */
+
+  --serif: "Source Serif 4 Variable", "Iowan Old Style", Charter, Georgia, serif;
+  --sans: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --shadow-1: 0 1px 2px color-mix(in srgb, var(--sand-12) 6%, transparent);
+  --shadow-2: 0 2px 8px color-mix(in srgb, var(--sand-12) 8%, transparent);
+  --shadow-3: 0 12px 40px color-mix(in srgb, var(--sand-12) 16%, transparent);
+
+  /* layout constants */
+  --rail-w: 232px;
+  --main-pad: var(--space-7);
+  --paper-max: 720px;
+  --margin-min: 288px;
+}
