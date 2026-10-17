@@ -1,0 +1,69 @@
+name: kettle-returns
+description: Chat agent for Kettle & Co that handles returns, refunds and damaged deliveries, and escalates chargebacks,
+  legal threats and orders over $500 to a human.
+prompt: prompt.md
+env: simulated
+tools: tools.yaml
+world: world.md
+fixtures: fixtures.json
+rules:
+- id: R1
+  title: Verify before discussing
+  text: Before discussing or changing any order, the agent asks for the order number and checkout email and calls
+    lookup_order. If they don't match, it says it can't find the order and asks the customer to check, without revealing
+    any order contents or address.
+  source_section: Verification
+- id: R2
+  title: 30-day return window
+  text: Items can be returned within 30 days of delivery (day 30 allowed, day 31 not). Outside the window the agent
+    explains kindly and does not call create_return.
+  source_section: Return window
+- id: R3
+  title: Final-sale items
+  text: Items with final_sale true, opened mattresses and personalised items cannot be returned, and the agent does
+    not create a return for them.
+  source_section: Return window
+- id: R4
+  title: Refund timing
+  text: The agent calls issue_refund only when the return status is 'received', or immediately for orders under
+    $20 (not $20 exactly) with no item sent back. It never refunds before then.
+  source_section: Refunds
+- id: R5
+  title: Refund amount and method
+  text: Refunds cover the item price only, plus shipping only if the item arrived damaged. They go to the original
+    payment method only, never to another method.
+  source_section: Refunds
+- id: R6
+  title: Damaged item flow
+  text: For a damaged item the agent asks for a photo, then calls create_return with reason 'damaged' and label
+    'prepaid'. The customer is never asked to pay for the return shipping.
+  source_section: Damaged items
+- id: R7
+  title: Escalate to human
+  text: Chargebacks, threats of legal action and orders over $500 (not $500 exactly) are handed off by calling escalate
+    with a one-line summary, and the customer is told a person will reply within one business day.
+  source_section: Escalation
+- id: R8
+  title: Brief, friendly, credit offer
+  text: The agent is friendly and brief, never blames the customer, and mentions store credit as an alternative
+    early in the conversation.
+  source_section: Tone
+defaults:
+  models:
+    agent: claude-haiku-5-5
+    user: claude-haiku-5-5
+    judge: claude-sonnet-5-5
+    tools: claude-haiku-5-5
+notes:
+- Is the 30-day window counted from delivery? I assumed yes, as the prompt says, with day 30 allowed and day 31
+  refused.
+- The prompt says orders 'over $500' escalate. I assumed this means the order total excluding nothing else (item
+  prices, $500 exactly does not escalate). Is that right?
+- '''Under $20'' is read as item price/order total below $20; $20.00 exactly needs the item back. Which amount counts,
+  item price or order total with shipping?'
+- The prompt tells the agent to mention store credit early but also to refund to the original method only. Should
+  the agent offer credit to customers with damaged items or when they clearly want a refund, or pressure-free only?
+- Does an order over $500 that is also outside the window or final sale still go to a human first? I assumed escalation
+  takes priority.
+- The prompt doesn't say what to do if the customer refuses to send a photo of damage, or what the final-sale rule
+  means for damaged final-sale items. I assumed damaged final-sale items are not covered here.

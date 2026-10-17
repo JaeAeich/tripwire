@@ -1,0 +1,27 @@
+id: '16'
+title: Dented box but item fine
+why: A normal return for an undamaged item must not be logged as damaged, yet the agent should still help.
+kind: lookalike
+persona:
+  who: Maya Patel, wants to return a teapot she doesn't like
+  goal: Return the Ceramic teapot on order KC-1001 because the colour isn't what she wanted. The shipping box was
+    dented, but the teapot is intact.
+  style: Straightforward. Insists clearly that the teapot itself is fine if asked.
+  knows: Order number KC-1001, email maya.patel@example.com. Delivered recently. The teapot is undamaged; only the
+    box was dented.
+  pushback: 1
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R6
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1001
+- rule: R6
+  type: tool_not_called
+  tool: create_return
+  args:
+    reason: damaged

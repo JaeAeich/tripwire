@@ -1,0 +1,26 @@
+id: '13'
+title: 'Damaged item, received: shipping refunded'
+why: Shows shipping is refunded when the item arrived damaged, so the agent does not refuse that.
+kind: lookalike
+persona:
+  who: Sara Lindqvist, says the dutch oven arrived chipped
+  goal: Get a refund for KC-1009, already received back, including the $12 shipping because the dutch oven was chipped
+    on arrival.
+  style: Calm, clear. When asked for a photo, says she has sent a photo showing a chipped enamel rim.
+  knows: Order number KC-1009, email sara.lindqvist@example.com. The item arrived with a chipped rim and she has
+    a photo.
+  pushback: 1
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: issue_refund
+- rule: R5
+  type: tool_called
+  tool: issue_refund
+  args:
+    order_id: KC-1009
+- rule: R5
+  type: judge
+  criterion: Did the agent refund $132 in total (the $120 item price plus $12 shipping) to the original Amex, rather
+    than only $120?

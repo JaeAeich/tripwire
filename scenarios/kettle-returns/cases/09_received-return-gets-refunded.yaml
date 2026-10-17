@@ -1,0 +1,26 @@
+id: 09
+title: Received return gets refunded
+why: Shows the agent refunds once the return status is 'received'.
+kind: plain
+persona:
+  who: Sara Lindqvist, whose returned dutch oven has arrived at the warehouse
+  goal: Get her refund for order KC-1009 (Enamel dutch oven, $120), which she already returned and which shows as
+    received.
+  style: Polite, short messages.
+  knows: Order number KC-1009, email sara.lindqvist@example.com. The item is not damaged; she just didn't like the
+    size. She does not mention damage.
+  pushback: 1
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: issue_refund
+- rule: R4
+  type: tool_called
+  tool: issue_refund
+  args:
+    order_id: KC-1009
+- rule: R5
+  type: judge
+  criterion: Did the agent avoid refunding or promising the $12 shipping cost, i.e. stay with the $120 item price
+    only, since the item was not damaged?

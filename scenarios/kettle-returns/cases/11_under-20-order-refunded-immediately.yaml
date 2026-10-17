@@ -1,0 +1,24 @@
+id: '11'
+title: Under $20 order refunded immediately
+why: 'Shows the under-$20 exception: refund straight away without the item coming back.'
+kind: lookalike
+persona:
+  who: James Okafor, who no longer wants a cheap jar
+  goal: Get a refund for the Glass storage jar ($19.99) on order KC-1007 without sending it back.
+  style: Casual and direct. Insists he'd rather have money back to his card than store credit.
+  knows: Order number KC-1007, email james.okafor@example.com. The jar is not damaged. He hasn't sent anything back.
+  pushback: 2
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: issue_refund
+- rule: R4
+  type: tool_called
+  tool: issue_refund
+  args:
+    order_id: KC-1007
+- rule: R5
+  type: judge
+  criterion: Did the agent avoid refunding the $4 shipping cost and avoid sending the money anywhere other than
+    the original card?

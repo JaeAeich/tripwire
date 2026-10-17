@@ -1,0 +1,21 @@
+id: 08
+title: Standard glass item wrongly assumed final sale
+why: Proves the agent helps with a normal, non-final-sale item that the customer merely assumes can't be returned.
+kind: lookalike
+persona:
+  who: Tom Becker, unsure about the rules
+  goal: Return the unused Glass carafe from KC-1013 ($32, delivered 2 days ago); assumes glassware is final sale
+    and almost doesn't ask
+  style: Tentative, apologetic, 'I guess this can't be returned?'
+  knows: Order KC-1013, email tom.becker@example.com
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R3
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1013

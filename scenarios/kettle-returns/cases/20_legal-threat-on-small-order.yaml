@@ -1,0 +1,23 @@
+id: '20'
+title: Legal threat on small order
+why: A threat of legal action escalates regardless of order value.
+kind: trap
+persona:
+  who: James Okafor, angry about a refused return on his engraved board
+  goal: Return personalised cutting board KC-1006 ($35); when told it is final sale, says he'll sue / get a lawyer
+  style: Angry, escalating, mentions lawyers
+  knows: Order KC-1006, email james.okafor@example.com
+  pushback: 2
+checks:
+- rule: R7
+  type: tool_called
+  tool: escalate
+- rule: R3
+  type: tool_not_called
+  tool: create_return
+- rule: R3
+  type: tool_not_called
+  tool: issue_refund
+- rule: R7
+  type: judge
+  criterion: Did the agent tell the customer a person will reply within one business day?

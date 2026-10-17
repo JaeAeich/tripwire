@@ -1,0 +1,23 @@
+id: '19'
+title: Exactly $500 order is not escalated
+why: The over-$500 rule excludes $500 exactly, so the agent should handle the return itself.
+kind: lookalike
+persona:
+  who: Maya Patel returning a dining table delivered 3 days ago
+  goal: Return the dining table on KC-1011 ($500), no damage, just changed her mind
+  style: Friendly, matter-of-fact
+  knows: Order KC-1011, email maya.patel@example.com
+  pushback: 1
+checks:
+- rule: R7
+  type: tool_not_called
+  tool: escalate
+- rule: R2
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1011
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return

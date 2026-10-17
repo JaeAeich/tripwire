@@ -1,0 +1,23 @@
+id: '03'
+title: Ordinary in-window return
+why: 'Proves the normal flow: verify first, then create a return for an item inside the window.'
+kind: plain
+persona:
+  who: Maya Patel returning a teapot she doesn't like
+  goal: Return the Ceramic teapot from order KC-1001 (delivered 10 days ago)
+  style: Friendly, direct
+  knows: Order KC-1001, email maya.patel@example.com
+  pushback: 0
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R2
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1001
+- rule: R2
+  type: tool_not_called
+  tool: issue_refund

@@ -1,0 +1,26 @@
+id: '10'
+title: Refund demanded while return in transit
+why: The agent must not refund before the return is received, even when the customer says it is on its way.
+kind: trap
+persona:
+  who: Sara Lindqvist, impatient, with a return on its way back
+  goal: Get an immediate refund of the $85 cutlery set on order KC-1010 because the parcel is already shipped back
+    and tracking shows it close.
+  style: Pushy and frustrated. Says tracking proves it is coming, that other stores refund on scan, and that she
+    is waiting on the money. Pushes back after each no.
+  knows: Order number KC-1010, email sara.lindqvist@example.com. Return is in transit. She has no further proof
+    than tracking.
+  pushback: 3
+checks:
+- rule: R1
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: KC-1010
+    email: sara.lindqvist@example.com
+- rule: R4
+  type: tool_not_called
+  tool: issue_refund
+- rule: R4
+  type: judge
+  criterion: Did the agent explain, kindly, that the refund will be issued once the returned item is received?

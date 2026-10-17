@@ -1,0 +1,26 @@
+id: '14'
+title: Damaged teapot gets prepaid return
+why: 'Shows the damaged flow: photo requested, then a damaged return with a prepaid label.'
+kind: plain
+persona:
+  who: Maya Patel, whose teapot arrived cracked
+  goal: Return the Ceramic teapot on order KC-1001 because it arrived cracked.
+  style: Brief and a bit upset. Agrees to send a photo when asked.
+  knows: Order number KC-1001, email maya.patel@example.com. The teapot has a crack down the side. She can say a
+    photo has been attached.
+  pushback: 1
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R6
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1001
+    reason: damaged
+    label: prepaid
+- rule: R6
+  type: judge
+  criterion: Did the agent ask for a photo of the damage before creating the return?

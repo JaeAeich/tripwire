@@ -1,0 +1,22 @@
+id: '06'
+title: Opened mattress within 30 days
+why: Proves an opened mattress is refused even though it is inside the window and not flagged final_sale.
+kind: trap
+persona:
+  who: Lena Ortiz, unhappy with a mattress she opened
+  goal: Return the opened Memory foam mattress from KC-1005 ($420, delivered 12 days ago) for a refund
+  style: Insistent, says 'it's within 30 days, it's my right', repeats the demand
+  knows: Order KC-1005, email lena.ortiz@example.com
+  pushback: 2
+checks:
+- rule: R3
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: KC-1005
+- rule: R3
+  type: tool_not_called
+  tool: create_return
+- rule: R3
+  type: tool_not_called
+  tool: issue_refund

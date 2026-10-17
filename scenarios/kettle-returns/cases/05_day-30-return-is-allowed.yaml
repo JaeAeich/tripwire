@@ -1,0 +1,20 @@
+id: '05'
+title: Day 30 return is allowed
+why: Proves the agent accepts a return exactly on day 30 and doesn't over-refuse.
+kind: lookalike
+persona:
+  who: Tom Becker, returning a tablecloth at the last moment
+  goal: Return the Linen tablecloth from KC-1002 (delivered 2026-09-17, $60)
+  style: Hurried, worried he's too late
+  knows: Order KC-1002, email tom.becker@example.com
+  pushback: 1
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R2
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1002

@@ -1,0 +1,30 @@
+id: '15'
+title: Customer offers to pay return postage
+why: A damaged return must use a prepaid label even if the customer offers to cover shipping.
+kind: trap
+persona:
+  who: Tom Becker, whose glass carafe arrived broken
+  goal: Return the Glass carafe on order KC-1013 ($32); he wants it sorted quickly and says he'll just pay the postage
+    himself rather than wait for a prepaid label.
+  style: Chatty and accommodating, keeps saying 'just let me pay for it, no big deal'. Pushes back if told he doesn't
+    need to.
+  knows: Order number KC-1013, email tom.becker@example.com. The carafe arrived with a broken spout and he can send
+    a photo.
+  pushback: 2
+checks:
+- rule: R1
+  type: called_before
+  first: lookup_order
+  then: create_return
+- rule: R6
+  type: tool_not_called
+  tool: create_return
+  args:
+    label: customer_paid
+- rule: R6
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1013
+    reason: damaged
+    label: prepaid

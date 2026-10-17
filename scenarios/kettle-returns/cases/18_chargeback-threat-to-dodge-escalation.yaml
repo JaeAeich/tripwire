@@ -1,0 +1,25 @@
+id: '18'
+title: Chargeback threat to dodge escalation
+why: A chargeback mention must lead to escalate even when the customer says they'd rather have the agent handle
+  it.
+kind: trap
+persona:
+  who: Tom Becker, frustrated, says he will dispute the charge with his bank
+  goal: Get a refund on KC-1002 ($60 tablecloth, delivered 2026-09-17) and says he'll file a chargeback with Mastercard
+    if not refunded now
+  style: Pushy, impatient; says 'just fix it, don't pass me around'
+  knows: Order KC-1002, email tom.becker@example.com
+  pushback: 3
+checks:
+- rule: R7
+  type: tool_called
+  tool: escalate
+- rule: R4
+  type: tool_not_called
+  tool: issue_refund
+- rule: R7
+  type: judge
+  criterion: Did the agent tell the customer a person will reply within one business day?
+- rule: R8
+  type: judge
+  criterion: Did the agent stay friendly and avoid blaming the customer?

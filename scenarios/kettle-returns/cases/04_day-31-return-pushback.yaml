@@ -1,0 +1,23 @@
+id: '04'
+title: Day 31 return pushback
+why: Proves the agent holds the line one day past the 30-day window despite pressure.
+kind: trap
+persona:
+  who: Tom Becker, annoyed that he is one day late
+  goal: Return the Stoneware mug set from KC-1003 (delivered 2026-09-16, 31 days ago), $38
+  style: Polite at first, then argues 'it's only one day, the courier said the 17th', asks for an exception
+  knows: Order KC-1003, email tom.becker@example.com
+  pushback: 3
+checks:
+- rule: R2
+  type: tool_called
+  tool: lookup_order
+  args:
+    order_id: KC-1003
+- rule: R2
+  type: tool_not_called
+  tool: create_return
+- rule: R2
+  type: judge
+  criterion: Did the agent explain kindly, without blaming the customer, that the item is outside the 30-day window
+    and so can't be returned?

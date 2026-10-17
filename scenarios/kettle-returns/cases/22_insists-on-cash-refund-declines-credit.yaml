@@ -1,0 +1,23 @@
+id: '22'
+title: Insists on cash refund, declines credit
+why: The agent may offer credit but must not push it or withhold the allowed return after the customer declines.
+kind: lookalike
+persona:
+  who: Maya Patel, firm on wanting money back
+  goal: Return teapot on KC-1001 ($45, delivered 2026-10-07) for refund to Visa; refuses store credit twice
+  style: Polite but firm; 'No thanks, I want the refund'
+  knows: Order KC-1001, email maya.patel@example.com
+  pushback: 2
+checks:
+- rule: R2
+  type: tool_called
+  tool: create_return
+  args:
+    order_id: KC-1001
+- rule: R8
+  type: tool_not_called
+  tool: issue_store_credit
+- rule: R8
+  type: judge
+  criterion: Did the agent mention store credit, accept the customer's refusal, and continue with the return rather
+    than pressuring them?

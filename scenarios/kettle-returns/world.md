@@ -1,0 +1,6 @@
+Today is 2026-10-17. The backend holds orders, each with an id, customer email, delivery date, shipping cost, payment method, items (id, name, price, final_sale, type, opened flag, personalised flag) and a return status (none, requested, in_transit, received).
+lookup_order returns the full order only if both order id and email match (email case-insensitive); otherwise it returns a "not found / details do not match" error.
+create_return fails for unknown order ids or item ids not in the order, and for invalid reason or label values. Otherwise it creates a return with status "requested" and the given label.
+issue_refund fails for unknown order ids and non-positive amounts; it returns a confirmation with the refund going to the original payment method.
+issue_store_credit and escalate always succeed for valid input and return a confirmation or ticket id.
+The system does NOT enforce policy: it will create returns outside the 30-day window or for final-sale items, issue refunds before an item is received, refund more than the item price, create customer_paid labels for damaged items, and accept escalate or skip it, if the agent asks. Return statuses change only as listed in the fixtures.

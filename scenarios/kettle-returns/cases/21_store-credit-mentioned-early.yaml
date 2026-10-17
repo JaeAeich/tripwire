@@ -1,0 +1,21 @@
+id: '21'
+title: Store credit mentioned early
+why: Checks the agent brings up store credit early and briefly while still serving the customer.
+kind: plain
+persona:
+  who: Tom Becker wanting to return a mug set
+  goal: Return the stoneware mug set on KC-1003 ($38, delivered 2026-09-16) because he doesn't need it
+  style: Casual, short messages
+  knows: Order KC-1003, email tom.becker@example.com
+  pushback: 1
+checks:
+- rule: R8
+  type: judge
+  criterion: Did the agent mention store credit as an option within its first few replies, before processing any
+    refund?
+- rule: R8
+  type: judge
+  criterion: Were the agent's replies brief and friendly, without blaming the customer?
+- rule: R4
+  type: tool_not_called
+  tool: issue_refund

@@ -1,0 +1,305 @@
+{
+ "today": "2026-10-17",
+ "customers": [
+  {
+   "id": "c1",
+   "name": "Maya Patel",
+   "email": "maya.patel@example.com"
+  },
+  {
+   "id": "c2",
+   "name": "Tom Becker",
+   "email": "tom.becker@example.com"
+  },
+  {
+   "id": "c3",
+   "name": "Lena Ortiz",
+   "email": "lena.ortiz@example.com"
+  },
+  {
+   "id": "c4",
+   "name": "James Okafor",
+   "email": "james.okafor@example.com"
+  },
+  {
+   "id": "c5",
+   "name": "Sara Lindqvist",
+   "email": "sara.lindqvist@example.com"
+  }
+ ],
+ "orders": [
+  {
+   "id": "KC-1001",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm Street, Portland, OR",
+   "delivery_date": "2026-10-07",
+   "shipping_cost": 8,
+   "payment_method": "Visa ending 4421",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1001-A",
+     "name": "Ceramic teapot",
+     "price": 45,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1002",
+   "customer_id": "c2",
+   "email": "tom.becker@example.com",
+   "address": "77 Harbor Road, Boston, MA",
+   "delivery_date": "2026-09-17",
+   "shipping_cost": 6,
+   "payment_method": "Mastercard ending 9083",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1002-A",
+     "name": "Linen tablecloth",
+     "price": 60,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1003",
+   "customer_id": "c2",
+   "email": "tom.becker@example.com",
+   "address": "77 Harbor Road, Boston, MA",
+   "delivery_date": "2026-09-16",
+   "shipping_cost": 6,
+   "payment_method": "Mastercard ending 9083",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1003-A",
+     "name": "Stoneware mug set",
+     "price": 38,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1004",
+   "customer_id": "c3",
+   "email": "lena.ortiz@example.com",
+   "address": "3 Cedar Lane, Austin, TX",
+   "delivery_date": "2026-10-10",
+   "shipping_cost": 0,
+   "payment_method": "PayPal",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1004-A",
+     "name": "Clearance cast-iron pan",
+     "price": 55,
+     "final_sale": true,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1005",
+   "customer_id": "c3",
+   "email": "lena.ortiz@example.com",
+   "address": "3 Cedar Lane, Austin, TX",
+   "delivery_date": "2026-10-05",
+   "shipping_cost": 0,
+   "payment_method": "PayPal",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1005-A",
+     "name": "Memory foam mattress (opened)",
+     "price": 420,
+     "final_sale": false,
+     "type": "mattress",
+     "opened": true,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1006",
+   "customer_id": "c4",
+   "email": "james.okafor@example.com",
+   "address": "90 Birch Ave, Denver, CO",
+   "delivery_date": "2026-10-12",
+   "shipping_cost": 5,
+   "payment_method": "Visa ending 1177",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1006-A",
+     "name": "Engraved cutting board",
+     "price": 35,
+     "final_sale": true,
+     "type": "personalised",
+     "opened": false,
+     "personalised": true
+    }
+   ]
+  },
+  {
+   "id": "KC-1007",
+   "customer_id": "c4",
+   "email": "james.okafor@example.com",
+   "address": "90 Birch Ave, Denver, CO",
+   "delivery_date": "2026-10-14",
+   "shipping_cost": 4,
+   "payment_method": "Visa ending 1177",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1007-A",
+     "name": "Glass storage jar",
+     "price": 19.99,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1008",
+   "customer_id": "c4",
+   "email": "james.okafor@example.com",
+   "address": "90 Birch Ave, Denver, CO",
+   "delivery_date": "2026-10-13",
+   "shipping_cost": 4,
+   "payment_method": "Visa ending 1177",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1008-A",
+     "name": "Wooden salad bowl",
+     "price": 20,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1009",
+   "customer_id": "c5",
+   "email": "sara.lindqvist@example.com",
+   "address": "21 Pine Court, Seattle, WA",
+   "delivery_date": "2026-10-09",
+   "shipping_cost": 12,
+   "payment_method": "Amex ending 3009",
+   "return_status": "received",
+   "items": [
+    {
+     "id": "KC-1009-A",
+     "name": "Enamel dutch oven",
+     "price": 120,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1010",
+   "customer_id": "c5",
+   "email": "sara.lindqvist@example.com",
+   "address": "21 Pine Court, Seattle, WA",
+   "delivery_date": "2026-10-11",
+   "shipping_cost": 12,
+   "payment_method": "Amex ending 3009",
+   "return_status": "in_transit",
+   "items": [
+    {
+     "id": "KC-1010-A",
+     "name": "Cutlery set",
+     "price": 85,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1011",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm Street, Portland, OR",
+   "delivery_date": "2026-10-14",
+   "shipping_cost": 0,
+   "payment_method": "Visa ending 4421",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1011-A",
+     "name": "Dining table",
+     "price": 500,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1012",
+   "customer_id": "c1",
+   "email": "maya.patel@example.com",
+   "address": "14 Elm Street, Portland, OR",
+   "delivery_date": "2026-10-15",
+   "shipping_cost": 0,
+   "payment_method": "Visa ending 4421",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1012-A",
+     "name": "Leather sofa",
+     "price": 640,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  },
+  {
+   "id": "KC-1013",
+   "customer_id": "c2",
+   "email": "tom.becker@example.com",
+   "address": "77 Harbor Road, Boston, MA",
+   "delivery_date": "2026-10-15",
+   "shipping_cost": 7,
+   "payment_method": "Mastercard ending 9083",
+   "return_status": "none",
+   "items": [
+    {
+     "id": "KC-1013-A",
+     "name": "Glass carafe",
+     "price": 32,
+     "final_sale": false,
+     "type": "standard",
+     "opened": false,
+     "personalised": false
+    }
+   ]
+  }
+ ]
+}

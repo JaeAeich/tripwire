@@ -1,0 +1,91 @@
+- name: lookup_order
+  description: Looks up an order by order number and checkout email. Returns the order with its items (price, final_sale,
+    damaged-eligible details, item type), shipping cost, total, payment method, delivery date, and return status.
+    Returns an error if the order is not found or the email does not match.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: The order number given by the customer.
+      email:
+        type: string
+        description: The email used at checkout.
+    required:
+    - order_id
+    - email
+  mutates: false
+- name: create_return
+  description: Starts a return for items in an order and returns the return record with its status. Label says who
+    pays for return shipping.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: The order number.
+      items:
+        type: string
+        description: Comma-separated item ids to return.
+      reason:
+        type: string
+        description: Why the item is being returned.
+        enum:
+        - damaged
+        - unwanted
+        - wrong_item
+        - other
+      label:
+        type: string
+        description: Who pays for the return label.
+        enum:
+        - prepaid
+        - customer_paid
+    required:
+    - order_id
+    - items
+    - reason
+    - label
+  mutates: true
+- name: issue_refund
+  description: Refunds an amount in dollars to the order's original payment method. Returns a confirmation or an
+    error.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: The order number.
+      amount:
+        type: number
+        description: Amount in dollars to refund.
+    required:
+    - order_id
+    - amount
+  mutates: true
+- name: issue_store_credit
+  description: Issues store credit in dollars to the customer's account for the order. Returns a confirmation.
+  input_schema:
+    type: object
+    properties:
+      order_id:
+        type: string
+        description: The order number.
+      amount:
+        type: number
+        description: Amount in dollars of store credit.
+    required:
+    - order_id
+    - amount
+  mutates: true
+- name: escalate
+  description: Hands the chat to a human agent with a one-line summary. Returns a ticket confirmation.
+  input_schema:
+    type: object
+    properties:
+      summary:
+        type: string
+        description: One-line summary of the issue for the human.
+    required:
+    - summary
+  mutates: true
